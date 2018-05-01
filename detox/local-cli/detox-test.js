@@ -40,11 +40,11 @@ program
 
 if (program.configuration) {
   if (!config.configurations[program.configuration]) {
-    throw new DetoxConfigError(`Cannot determine configuration '${program.configuration}'. 
+    throw new DetoxConfigError(`Cannot determine configuration '${program.configuration}'.
     Available configurations: ${_.keys(config.configurations).join(', ')}`);
   }
 } else if(!program.configuration) {
-  throw new DetoxConfigError(`Cannot determine which configuration to use. 
+  throw new DetoxConfigError(`Cannot determine which configuration to use.
   Use --configuration to choose one of the following: ${_.keys(config.configurations).join(', ')}`);
 }
 
@@ -95,7 +95,7 @@ function runMocha() {
   const reuse = program.reuse ? `--reuse` : '';
   const artifactsLocation = program.artifactsLocation ? `--artifacts-location ${program.artifactsLocation}` : '';
   const configFile = runnerConfig ? `--opts ${runnerConfig}` : '';
-  const platformString = platform ? `--grep ${getPlatformSpecificString(platform)} --invert` : '';
+  const platformString = platform ? `--grep ${getPlatformSpecificString(platform)}` : '';
   const headless = program.headless ? `--headless` : '';
 
   const debugSynchronization = program.debugSynchronization ? `--debug-synchronization ${program.debugSynchronization}` : '';
@@ -156,5 +156,3 @@ function getDefaultConfiguration() {
     return _.keys(config.configurations)[0];
   }
 }
-
-
